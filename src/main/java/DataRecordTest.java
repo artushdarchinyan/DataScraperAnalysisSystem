@@ -1,3 +1,4 @@
+import com.ds_intelligence_arm.storage.model.auto_am_DataRecord;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.junit.jupiter.api.Test;
@@ -5,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -14,6 +16,7 @@ public class DataRecordTest {
 
     private static final Gson gson = new Gson();
 
+    @SuppressWarnings("CallToPrintStackTrace")
     @Test
     public void testReadDataRecordsFromJson() {
         // Load JSON file from resources
@@ -25,7 +28,7 @@ public class DataRecordTest {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             // Parse JSON data into a list of maps
-            List<Map<String, String>> dataList = gson.fromJson(reader, listType);
+            List<Map<String, String>> dataList = Collections.unmodifiableList(gson.fromJson(reader, listType));
             
             for (Map<String, String> data : dataList) {
                 // Create DataRecord object for each entry

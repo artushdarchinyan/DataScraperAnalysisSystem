@@ -25,6 +25,19 @@ public class news_am_DataRecord {
         this.html = html;
     }
 
+    public String getUrl() {
+        return this.url;
+    }
+
+    public String getTitle() {
+        return getFirstElementText("title");
+    }
+
+    public String getDescription() {return getMetaContent("description");}
+
+    public String getDate() {return getMetaContent("date");}
+
+    public String getText() {return getFirstElementText(".article-text");}
 
     //ToDo: Getter for url, date, title, text using any of the getElements method 
 

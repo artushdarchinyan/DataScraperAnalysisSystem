@@ -20,7 +20,7 @@ public class auto_am_DataRecord {
     String url;
     String html;
 
-    auto_am_DataRecord(String url, String html){
+    public auto_am_DataRecord(String url, String html){
         this.url = url;
         this.html = html;
     }
@@ -67,5 +67,4 @@ public class auto_am_DataRecord {
             Elements elements = document.select(selector);
             return new ArrayList<>(elements);
         }
-
 }
